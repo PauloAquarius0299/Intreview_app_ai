@@ -79,7 +79,7 @@
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
+  --background: oklch(8.976% 0.04822 298.915);
   --foreground: oklch(0.984 0.003 247.858);
   --card: oklch(0.208 0.042 265.755);
   --card-foreground: oklch(0.984 0.003 247.858);
@@ -112,10 +112,28 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-.pattern {
-  background-image: url("/bg.png");
-  background-repeat: no-repeat;
-  background-position: top;
+.auth-layout {
+  @apply flex items-center justify-center mx-auto max-w-7xl min-h-screen max-sm:px-4 max-sm:py-8;
+}
+
+.card-border {
+  @apply border border-gray-200 rounded-2xl shadow-lg p-6 max-sm:p-4 bg-gradient-to-br from-gray-600 to-gray-900;
+}
+
+.text-primary-100{
+  @apply text-primary font-bold text-4xl;
+}
+
+.btn {
+  @apply bg-primary rounded-4xl px-2 py-6 text-primary-foreground cursor-pointer hover:bg-gray-300;
+}
+
+.text-user-primary{
+  @apply text-primary font-bold;
+}
+
+.input {
+  @apply bg-input border border-border rounded-lg px-4 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring;
 }
 
 @layer base {

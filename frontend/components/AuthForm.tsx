@@ -52,7 +52,6 @@ const AuthForm = ({type}: {type: FormType}) => {
     }
   }
 
-
   return (
     <div className="card-border lg:min-w-[566px] bg-gradient-to-br from-gray-700 to-gray-900">
   {/* Cabeçalho */}

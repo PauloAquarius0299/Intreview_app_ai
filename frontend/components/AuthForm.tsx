@@ -10,6 +10,9 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import {toast} from 'sonner'
 import FormField from '../components/FormField'
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { signUp, signIn } from '@/lib/actions/auth..action'
+import { auth } from '@/firebase/client'
 
 type FormType = 'sign-in' | 'sign-up';
 
@@ -37,12 +40,44 @@ const AuthForm = ({type}: {type: FormType}) => {
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
+ async function onSubmit(values: z.infer<typeof formSchema>) {
     try{
       if (type === 'sign-up') {
+        const {nome, email, senha} = values;
+
+        const userCredentials = await createUserWithEmailAndPassword(auth, email, senha);
+
+        const result = await signUp({
+          uid: userCredentials.user.uid,
+          name: nome!,
+          email,
+          password: senha,
+        })
+
+        if (!result || !result.success) {
+          toast.error(result?.message || "Erro desconhecido ao criar conta.");
+          return
+        }
+
         toast.success("Conta criada com sucesso. Por favor acesse");
         router.push("/sign-in")
       } else {
+
+        const {email, senha}= values;
+
+        const userCredentials = await signInWithEmailAndPassword(auth, email, senha);
+
+        const idToken = await userCredentials.user.getIdToken();
+
+        if(!idToken){
+          toast.error('sing in failed')
+          return;
+        }
+
+        await signIn({
+          email, idToken
+        });
+
         toast.success("Acesso permitido");
         router.push('/')
       }

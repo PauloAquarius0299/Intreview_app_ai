@@ -14,3 +14,14 @@ export type Interview = {
   createAt: string; 
 };
 
+export type SignUpParams ={
+    uid: string;
+    email: string;
+    password: string;
+    name: string;
+}
+
+export type SignInParams = {
+    email: string;
+    idToken: string;
+}

@@ -25,3 +25,7 @@ export type SignInParams = {
     email: string;
     idToken: string;
 }
+
+export type AgentProps = {
+  username: string
+}

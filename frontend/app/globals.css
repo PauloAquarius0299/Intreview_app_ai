@@ -144,12 +144,21 @@
   @apply  text-gray-400;
 }
 
-.card-interview{
-  @apply  text-white;
-}
-
 .root-layout{
   @apply p-8 gap-2 mb-4;
+}
+
+.call-view {
+  @apply flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800;
+}
+
+
+.avatar {
+  @apply w-32 h-32 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 flex items-center justify-center text-2xl font-bold shadow-md;
+}
+
+.animate-speak {
+  @apply absolute inline-flex size-5/6 animate-ping rounded-full bg-purple-400 opacity-75;
 }
 
 @layer base {

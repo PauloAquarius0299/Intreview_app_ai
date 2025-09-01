@@ -34,7 +34,7 @@ const InterviewCard = ({
   const cover = getInterviewCoverByIndex(index ?? 0);
 
   return (
-    <div className="card-border w-[360px] max-sm:w-full min-h-96 relative">
+    <div className="card-border w-[360px] max-sm:w-full min-h-96 text-white relative">
       <div className="card-interview p-4 flex flex-col gap-4">
         
         {/* Tipo da entrevista */}
